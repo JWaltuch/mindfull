@@ -10,6 +10,7 @@ module.exports = buildSchema(`
         }
 
         type Record {
+            id: Int!
             hungry: Boolean!
             stressed: Boolean!
             bored: Boolean!
@@ -19,15 +20,29 @@ module.exports = buildSchema(`
         }
 
         type JournalEntry {
+            id: Int!
             entry: Int!
             emotion: String!
-            date: String!
         }
 
         input UserInput {
             username: String!
             email: String!
             password: String!
+        }
+
+        input RecordInput {
+            hungry: Boolean!
+            stressed: Boolean!
+            bored: Boolean!
+            sad: Boolean!
+            userPlansToEat: Boolean!
+            userAte: Boolean
+        }
+
+        type JournalInput {
+            entry: Int!
+            emotion: String!
         }
 
         type RootQuery {

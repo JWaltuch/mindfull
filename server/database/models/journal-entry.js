@@ -8,9 +8,6 @@ const JournalEntry = db.define('journalentry', {
   emotion: {
     type: Sequelize.STRING,
     values: ['hungry', 'bored', 'stressed', 'sad']
-  },
-  date: {
-    type: Sequelize.DATE
   }
 })
 
