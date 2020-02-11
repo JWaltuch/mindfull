@@ -17,11 +17,10 @@ module.exports = buildSchema(`
         }
 
         type RootQuery = {
-            users: [User!]!
         }
 
         type RootMutation = {
-            signUp(userInputL UserInput): User
+            signUp(userInput: UserInput): User
         }
 
         schema{
