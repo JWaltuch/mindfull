@@ -9,6 +9,21 @@ module.exports = buildSchema(`
             password: String
         }
 
+        type Record {
+            hungry: Boolean!
+            stressed: Boolean!
+            bored: Boolean!
+            sad: Boolean!
+            userPlansToEat: Boolean!
+            userAte: Boolean
+        }
+
+        type JournalEntry {
+            entry: Int!
+            emotion: String!
+            date: String!
+        }
+
         input UserInput {
             username: String!
             email: String!
