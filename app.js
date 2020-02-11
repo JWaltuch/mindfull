@@ -1,8 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const graphqlHttp = require('express-graphql')
-//buildSchema: built in function that takes a string to define the schema
-const {buildSchema} = require('graphql')
+const graphqlSchema = require('./graphql/schema/index')
 
 const app = express()
 
@@ -12,7 +11,7 @@ app.use(
   '/graphql',
   graphqlHttp({
     //has graphql root schema
-    schema: buildSchema('schema{query: mutation:}'),
+    schema: graphqlSchema,
     //holds an object with root resolvers
     rootValue: {}
   })
