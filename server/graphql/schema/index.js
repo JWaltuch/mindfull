@@ -1,10 +1,9 @@
 //buildSchema: built in function that takes a string to define the schema
 const {buildSchema} = require('graphql')
-// const User = require('../../database/db')
 
 module.exports = buildSchema(`
         type User {
-            _id: ID!
+            id: Int!
             username: String!
             email: String!
             password: String
@@ -16,10 +15,11 @@ module.exports = buildSchema(`
             password: String!
         }
 
-        type RootQuery = {
+        type RootQuery {
+            users: [User!]!
         }
 
-        type RootMutation = {
+        type RootMutation {
             signUp(userInput: UserInput): User
         }
 
