@@ -1,4 +1,5 @@
 const User = require('../../database/models/user')
+const passport = require('../../app')
 
 module.exports = {
   users: async () => {
@@ -9,6 +10,7 @@ module.exports = {
       console.log(error)
     }
   },
+  me: async () => {},
   signUp: async args => {
     try {
       let existingUser = await User.findOne({
@@ -21,6 +23,10 @@ module.exports = {
         username: args.userInput.username,
         email: args.userInput.email,
         password: args.userInput.password
+      })
+      passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login'
       })
       return {...newUser, password: null}
     } catch (error) {

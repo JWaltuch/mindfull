@@ -46,20 +46,27 @@ module.exports = buildSchema(`
         }
 
         type RootQuery {
-            records: [Record!]!
-            journalEntries: [JournalEntry!]!
+            users: [User!]!
+            me: User
         }
 
         type RootMutation {
             signUp(userInput: UserInput): User
-            login(userInput: {email: String!, password: String!}): User
-            getMe(id: Int): User
-            logout(id: Int): User
-            createRecord(recordInput: RecordInput): Record
-            createJournalEntry(journalInput: JournalInput): Journal
         }
 
         schema{
             query: RootQuery
             mutation: RootMutation
         }`)
+
+//FUTURE ROUTE MUTATIONS
+// signUp(userInput: UserInput): User
+// login(userInput: {email: String!, password: String!}): User
+// getMe(id: Int): User
+// logout(id: Int): User
+// createRecord(recordInput: RecordInput): Record
+// createJournalEntry(journalInput: JournalInput): Journal
+
+//FUTURE ROUTE QUERIES
+// records: [Record!]!
+// journalEntries: [JournalEntry!]!
