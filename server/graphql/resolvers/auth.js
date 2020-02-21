@@ -1,14 +1,14 @@
 const User = require('../../database/models/user')
 
 module.exports = {
-  users: async () => {
-    try {
-      let allUsers = await User.findAll()
-      return allUsers
-    } catch (error) {
-      console.log(error)
-    }
-  },
+  // users: async () => {
+  //   try {
+  //     let allUsers = await User.findAll()
+  //     return allUsers
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // },
   signUp: async args => {
     try {
       let existingUser = await User.findOne({

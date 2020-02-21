@@ -45,14 +45,20 @@ module.exports = buildSchema(`
             emotion: String!
         }
 
+        type AuthPayload {
+            userId: Int!
+            token: String!
+            tokenExpiration: Int!
+        }
+
         type RootQuery {
             records: [Record!]!
             journalEntries: [JournalEntry!]!
+            login(email: String!, password: String!): AuthPaylod!
         }
 
         type RootMutation {
             signUp(userInput: UserInput): User
-            login(userInput: {email: String!, password: String!}): User
             getMe(id: Int): User
             logout(id: Int): User
             createRecord(recordInput: RecordInput): Record
