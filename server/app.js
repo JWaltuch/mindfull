@@ -10,6 +10,8 @@ const graphqlResolvers = require('./graphql/resolvers/index')
 //graphql middleware import
 const isAuth = require('./graphql/middleware/is-auth')
 
+const db = require('./database/db')
+
 const app = express()
 
 app.use(bodyParser.json())
@@ -27,5 +29,5 @@ app.use(
   })
 )
 
-// db.sync()
+db.sync()
 app.listen(3000)
