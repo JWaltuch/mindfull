@@ -40,7 +40,7 @@ module.exports = buildSchema(`
             userAte: Boolean
         }
 
-        type JournalInput {
+        input JournalInput {
             entry: Int!
             emotion: String!
         }
@@ -55,11 +55,11 @@ module.exports = buildSchema(`
             records: [Record!]!
             journalEntries: [JournalEntry!]!
             login(email: String!, password: String!): AuthPayload!
+            getMe(id: Int): User
         }
 
         type RootMutation {
             signUp(userInput: UserInput): User
-            getMe(id: Int): User
             createRecord(recordInput: RecordInput): Record
             createJournalEntry(journalInput: JournalInput): JournalEntry
         }
