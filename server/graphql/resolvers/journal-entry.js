@@ -16,6 +16,20 @@ module.exports = {
       }
     }
   },
+  journalEntry: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error('No user logged in.')
+    } else {
+      try {
+        const journalEntry = await JournalEntry.findOne({
+          where: {id: args.id}
+        })
+        return journalEntry
+      } catch (error) {
+        throw new Error(error)
+      }
+    }
+  },
   createJournalEntry: async (args, req) => {
     if (!req.isAuth) {
       throw new Error('No user logged in.')

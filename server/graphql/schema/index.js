@@ -54,9 +54,9 @@ module.exports = buildSchema(`
 
         type RootQuery {
             records: [Record!]!
-            record: Record!
+            record(id: Int!): Record!
             journalEntries(recordId: Int): [JournalEntry!]!
-            journalEntry: JournalEntry!
+            journalEntry(id: Int!): JournalEntry!
             login(email: String!, password: String!): AuthPayload!
             getMe: User!
         }

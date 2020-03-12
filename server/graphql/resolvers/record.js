@@ -14,6 +14,20 @@ module.exports = {
       }
     }
   },
+  record: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error('No user logged in.')
+    } else {
+      try {
+        const record = await Record.findOne({
+          where: {id: args.id}
+        })
+        return record
+      } catch (error) {
+        throw new Error(error)
+      }
+    }
+  },
   createRecord: async (args, req) => {
     if (!req.isAuth) {
       throw new Error('No user logged in.')
