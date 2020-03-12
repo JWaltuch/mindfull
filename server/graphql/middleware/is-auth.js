@@ -5,12 +5,12 @@ module.exports = (req, res, next) => {
   //If the user is not autheticated, should pass info that lets subsequent requests know if can only access certain endpoints
   if (!authHeader) {
     req.isAuth = false
-    next()
+    return next()
   }
   const token = authHeader.split(' ')[1] // Bearer TOKEN
   if (!token || token === '') {
     req.isAuth = false
-    next()
+    return next()
   }
   let decodedToken = ''
   try {
@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
   }
   if (!decodedToken) {
     req.isAuth = false
-    next()
+    return next()
   }
   req.isAuth = true
   req.userId = decodedToken

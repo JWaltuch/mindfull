@@ -27,5 +27,5 @@ app.use(
   })
 )
 
-db.sync()
+// db.sync()
 app.listen(3000)

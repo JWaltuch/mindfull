@@ -60,12 +60,13 @@ module.exports = buildSchema(`
         type RootMutation {
             signUp(userInput: UserInput): User
             getMe(id: Int): User
-            logout(id: Int): User
             createRecord(recordInput: RecordInput): Record
-            createJournalEntry(journalInput: JournalInput): Journal
+            createJournalEntry(journalInput: JournalInput): JournalEntry
         }
 
         schema{
             query: RootQuery
             mutation: RootMutation
         }`)
+
+//logout(id: Int): User

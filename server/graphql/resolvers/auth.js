@@ -1,6 +1,6 @@
 const User = require('../../database/models/user')
 const jwt = require('jsonwebtoken')
-if (process.env.NODE_ENV !== 'production') require('../secrets')
+if (process.env.NODE_ENV !== 'production') require('../../../secrets')
 
 module.exports = {
   signUp: async ({userInput}) => {
