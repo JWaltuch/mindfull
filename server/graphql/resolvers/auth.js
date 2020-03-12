@@ -51,7 +51,7 @@ module.exports = {
     } else {
       try {
         const user = await User.findOne({where: {id: req.userId}})
-        return {user}
+        return user
       } catch (error) {
         throw new Error(error)
       }

@@ -43,6 +43,7 @@ module.exports = buildSchema(`
         input JournalInput {
             entry: Int!
             emotion: String!
+            recordId: Int!
         }
 
         type AuthPayload {
@@ -53,9 +54,9 @@ module.exports = buildSchema(`
 
         type RootQuery {
             records: [Record!]!
-            journalEntries: [JournalEntry!]!
+            journalEntries(recordId: Int): [JournalEntry!]!
             login(email: String!, password: String!): AuthPayload!
-            getMe(id: Int): User
+            getMe: User
         }
 
         type RootMutation {
