@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken')
 
 module.exports = (req, res, next) => {
+  //If the user is not autheticated, should pass info that lets subsequent requests know this, so it can only access certain endpoints
   const authHeader = req.get('Authorization')
-  //If the user is not autheticated, should pass info that lets subsequent requests know if can only access certain endpoints
   if (!authHeader) {
     req.isAuth = false
     return next()
