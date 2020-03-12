@@ -3,14 +3,6 @@ const jwt = require('jsonwebtoken')
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 module.exports = {
-  // users: async () => {
-  //   try {
-  //     let allUsers = await User.findAll()
-  //     return allUsers
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // },
   signUp: async ({userInput}) => {
     try {
       let existingUser = await User.findOne({
@@ -23,6 +15,9 @@ module.exports = {
         username: userInput.username,
         email: userInput.email,
         password: userInput.password
+      })
+      jwt.sign({userId: newUser.id}, process.env.SESSION_SECRET, {
+        expiresIn: '2h'
       })
       return {...newUser, password: null}
     } catch (error) {
@@ -48,6 +43,18 @@ module.exports = {
       }
     } catch (error) {
       console.log(error)
+    }
+  },
+  getMe: async (args, req) => {
+    if (!req.isAuth) {
+      throw new Error('No user logged in.')
+    } else {
+      try {
+        const user = await User.findOne({where: {id: req.userId}})
+        return {user}
+      } catch (error) {
+        throw new Error(error)
+      }
     }
   }
 }
