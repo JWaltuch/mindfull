@@ -16,10 +16,10 @@ module.exports = {
         email: userInput.email,
         password: userInput.password
       })
-      jwt.sign({userId: newUser.id}, process.env.SESSION_SECRET, {
+      const token = jwt.sign({userId: newUser.id}, process.env.SESSION_SECRET, {
         expiresIn: '2h'
       })
-      return {...newUser, password: null}
+      return {userId: newUser.id, token: token, tokenExpiration: 2}
     } catch (error) {
       console.log(error)
     }

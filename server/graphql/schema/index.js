@@ -62,7 +62,7 @@ module.exports = buildSchema(`
         }
 
         type RootMutation {
-            signUp(userInput: UserInput): User
+            signUp(userInput: UserInput): AuthPayload!
             createRecord(recordInput: RecordInput): Record
             createJournalEntry(journalInput: JournalInput): JournalEntry
         }
